@@ -1,0 +1,14 @@
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\bin\Debug\netstandard2.0\XFTest.deps.json
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\bin\Debug\netstandard2.0\XFTest.dll
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\bin\Debug\netstandard2.0\XFTest.pdb
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\XFTest.csprojAssemblyReference.cache
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\Views\Calendar.xaml.g.cs
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\Views\CleaningList.xaml.g.cs
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\Views\CleaningListDataTemplate.xaml.g.cs
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\XFTest.AssemblyInfoInputs.cache
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\XFTest.AssemblyInfo.cs
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\XFTest.dll
+C:\Users\bhara\Downloads\Xamarin Form Test\XamarinFormsTest\XFTest\XFTest\obj\Debug\netstandard2.0\XFTest.pdb
