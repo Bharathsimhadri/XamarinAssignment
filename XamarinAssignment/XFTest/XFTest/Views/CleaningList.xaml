@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:customcontrol="clr-namespace:XFTest.CustomControl"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
@@ -15,12 +14,23 @@
              NavigationPage.HasNavigationBar="False"
              Title="I DAG" 
              x:Class="XFTest.Views.CleaningList"
-             BackgroundColor="#f2f2ef">
+             BackgroundColor="#f2f2ef"
+             xmlns:Converters="clr-namespace:XFTest.Converters;assembly=XFTest">
     
     <ContentPage.Content>
 
-        <StackLayout>
-            <Grid Padding="0" >
+        <Grid>
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <Converters:TrueFalseConverter x:Key="TrueFalseConverter"/>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+           
+            <Grid Padding="0" Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -29,7 +39,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
 
-                <Label x:Name="PageHeading" Grid.Row="0" Grid.Column="0" Margin="{OnPlatform iOS='75,60,0,0', Android='75,30,20,0'}" Text="I DAG" 
+                <Label x:Name="PageHeading" Grid.Row="0" Grid.Column="0" Margin="{OnPlatform iOS='75,60,0,0', Android='75,30,20,0'}" Text="{Binding SelectedDateLabel}" 
                        Style="{StaticResource PageHeading}" 
                        HorizontalTextAlignment="Center" 
                        FontFamily="{StaticResource BoldFont}" />
@@ -39,12 +49,111 @@
                         Grid.Row="0" Grid.Column="1" 
 			        >
                     <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ShowDialogCommand}"  NumberOfTapsRequired="1"> </TapGestureRecognizer>
+                        <TapGestureRecognizer  Command="{Binding ToogleCalanderCommand}"  NumberOfTapsRequired="1"> </TapGestureRecognizer>
                     </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                 </ffimageloadingsvg:SvgCachedImage>
 
             </Grid>
-            <CollectionView ItemsSource="{Binding Monkeys}" Margin="20,20,20,20">
+
+            <Grid Padding="0" BackgroundColor="#25A87B" Grid.Row="0" IsVisible="{Binding IsToShowCalander}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.Column="0" Padding="20,20,20,20" >
+
+                    <Grid Padding="0,0,0,10" >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Margin="{OnPlatform iOS='0,55,0,0', Android='0,30,0,0'}" Text="{Binding DateLabel}" 
+                               Style="{StaticResource PageHeading}" 
+                               HorizontalTextAlignment="Start" 
+                               FontFamily="{StaticResource BoldFont}"  FontSize="{StaticResource FontSizeA20I23}" TextColor="#FFFFFF" />
+                        <ffimageloadingsvg:SvgCachedImage Margin="{OnPlatform iOS='0,60,0,0', Android='0,30,0,0'}" 
+                                Source="Arrow_Left.svg" 
+                                WidthRequest="12" 
+                                Grid.Row="0" Grid.Column="1"
+                                HorizontalOptions="End"
+			                >
+                            <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PreviousMonthCommand}"/>
+                            </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                        </ffimageloadingsvg:SvgCachedImage>
+                        <ffimageloadingsvg:SvgCachedImage Margin="{OnPlatform iOS='0,60,0,0', Android='0,30,0,0'}" 
+                                Source="Arrow_Right.svg" 
+                                WidthRequest="12" 
+                                Grid.Row="0" Grid.Column="2"
+                                HorizontalOptions="End"
+			                >
+                            <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NextMonthCommand}"/>
+                            </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                        </ffimageloadingsvg:SvgCachedImage>
+
+                    </Grid>
+
+                    <CollectionView ItemsLayout="HorizontalList" HorizontalOptions="FillAndExpand" SelectionChanged="CollectionView_SelectionChanged"
+                                    HeightRequest="80" ItemsSource="{Binding CalanderData}" SelectionMode="Single" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout HorizontalOptions="StartAndExpand" Margin="5,0" >
+                                    <Grid x:Name="calPad01" Style="{StaticResource CalDatePad}" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <yummy:PancakeView  
+                                                Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsToHighliteDate,Converter={StaticResource TrueFalseConverter}}">
+                                            <Label 
+                                                x:Name="dateLbl01" FontFamily="{StaticResource BoldFont}"
+                                                Style="{StaticResource CalDateText}" Text="{Binding Date}" 
+                                                TextColor="{StaticResource ColorBluishGrey}" 
+                                                HorizontalOptions="CenterAndExpand"
+                                                HeightRequest="35"
+                                                Padding="4,10,4,0"/>
+                                        </yummy:PancakeView>
+                                        <yummy:PancakeView  CornerRadius="{OnPlatform iOS='20', Android='45,45,45,45'}" 
+                                                   BackgroundColor="#368268" Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsToHighliteDate}">
+                                            <Label 
+                                                 FontFamily="{StaticResource BoldFont}"
+                                                Style="{StaticResource CalDateText}" Text="{Binding Date}" 
+                                                TextColor="{StaticResource ColorBluishGrey}" 
+                                                HorizontalOptions="CenterAndExpand"
+                                                HeightRequest="35"
+                                                Padding="4,10,4,0"/>
+                                        </yummy:PancakeView>
+                                        <Label 
+                                            Grid.Row="1" Grid.Column="0"
+                                            x:Name="dayLbl01"
+                                                    Text="{Binding Day}"
+                                            FontFamily="{StaticResource RegularFont}"
+                                            Style="{StaticResource NormalText11Cal}" 
+                                            TextColor="{StaticResource ColorBluishGrey}" 
+                                            HorizontalOptions="CenterAndExpand"
+                                        ></Label>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+            <RefreshView IsRefreshing="{Binding IsRefreshing}" RefreshColor="Blue" Command="{Binding RefreshCommand}"  Grid.Row="1">
+            <CollectionView ItemsSource="{Binding CarWashList}" Margin="20,20,20,20" SelectionChanged="CollectionView_SelectionChanged_1" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="0, 0, 0, 15">
@@ -123,8 +232,17 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            </RefreshView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" BackgroundColor="#80000000"
+                         Grid.Row="1">
+                <ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                   HeightRequest="30" WidthRequest="30" Color="Blue" IsRunning="True"/>
+            </StackLayout>
 
-        </StackLayout>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseCalander}"/>
+            </Grid.GestureRecognizers>
+        </Grid>
     </ContentPage.Content>
 
 </ContentPage>
