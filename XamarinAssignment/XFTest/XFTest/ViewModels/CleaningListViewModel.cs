@@ -332,6 +332,8 @@ namespace XFTest.ViewModels
                         D.Location = (D.HouseOwnerLatitude + D.HouseOwnerLongitude);
                         CarWashList.Add(D);
                     });
+
+                    //For finding distance from next service 
                     var carWashIndex = 1;
                     CarWashList.ForEach(D =>
                     {

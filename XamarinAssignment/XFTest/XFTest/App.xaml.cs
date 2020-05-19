@@ -24,7 +24,7 @@ namespace XFTest
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/CleaningList");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
