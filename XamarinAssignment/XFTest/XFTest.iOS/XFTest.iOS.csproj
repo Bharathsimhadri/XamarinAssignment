@@ -286,5 +286,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\Visit_Info.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DependencyServices\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

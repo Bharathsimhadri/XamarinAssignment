@@ -20,14 +20,6 @@ namespace XFTest.Views
         public CleaningList()
         {
             InitializeComponent();
-           // BindingContext = new CleaningListViewModel(dialogService);
-        }
-
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-            var state = width < 280 ? "Small" : width < 360 ? "Medium" : "Large";
-            VisualStateManager.GoToState(PageHeading, state);
         }
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,7 +34,10 @@ namespace XFTest.Views
             {
                 currentItem.IsToHighliteDate = true;
                 bidingContext.SelectedDateLabel = $"{currentItem.Date} {currentItem.Day}";
-                bidingContext.GetCarWashList();
+                System.Threading.Tasks.Task.Run(async() => 
+                { 
+                  await bidingContext.GetCarWashList();
+                });
             }
         }
 

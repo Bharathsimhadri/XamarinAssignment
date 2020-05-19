@@ -40,7 +40,8 @@ namespace XFTest.Models
         public List<Task> Tasks { get; set; }
         public string DisplayTask { get; set; }
         public string ToatalTimeForTasks { get; set; }
-        public string Location { get; set; }
+        public double Location { get; set; }
+        public double DistanceFromNextService { get; set; }
         public object[] HouseOwnerAssets { get; set; }
 
         public object[] VisitAssets { get; set; }

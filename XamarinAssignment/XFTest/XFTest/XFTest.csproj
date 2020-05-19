@@ -27,6 +27,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AppStrings\Appstrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Appstrings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="AppStrings\Appstrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Appstrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Calendar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
