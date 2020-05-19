@@ -59,7 +59,7 @@ namespace XFTest.ViewModels
         public ICommand ToogleCalanderCommand { get { return new Command(() => { IsToShowCalander = !IsToShowCalander; }); } }
         public ICommand PreviousMonthCommand { get { return new Command(() => { PreviousMonthClicked(); }); } }
         public ICommand NextMonthCommand { get { return new Command(() => { NextMonthClicked(); }); } }
-        public ICommand RefreshCommand { get { return new Command(async() => {await RefreshData(); }); } }
+        public ICommand RefreshCommand { get { return new Command(() => { RefreshData(); }); } }
         public ICommand CloseCalander { get { return new Command(() => { IsToShowCalander = false; }); } }
         #endregion
 
@@ -70,10 +70,7 @@ namespace XFTest.ViewModels
             _carFitServices = carFitServices;
             CarWashList = new ObservableCollection<CarWashDataContract>();
             PopulateCalanderData();
-            System.Threading.Tasks.Task.Run(async () => 
-            { 
-               await GetCarWashList();
-            });
+            GetCarWashList();
         }
         #endregion
 
@@ -305,13 +302,13 @@ namespace XFTest.ViewModels
             }
         }
 
-        async System.Threading.Tasks.Task RefreshData()
+        void RefreshData()
         {
             IsRefreshing = true;
-           await  GetCarWashList();
+            GetCarWashList();
         }
 
-        public async System.Threading.Tasks. Task GetCarWashList()
+        public async void GetCarWashList()
         {
             CarWashList.Clear();
             IsBusy = true;
@@ -337,9 +334,9 @@ namespace XFTest.ViewModels
                     var carWashIndex = 1;
                     CarWashList.ForEach(D =>
                     {
-                        if(CarWashList.Count>1&&carWashIndex<CarWashList.Count)
+                        if (CarWashList.Count > 1 && carWashIndex < CarWashList.Count)
                         {
-                            D.DistanceFromNextService =CarWashList[carWashIndex+1].Location- D.Location;
+                            D.DistanceFromNextService = CarWashList[carWashIndex + 1].Location - D.Location;
                         }
                         else
                         {

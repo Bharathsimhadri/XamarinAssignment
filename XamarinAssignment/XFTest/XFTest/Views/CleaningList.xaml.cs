@@ -34,10 +34,7 @@ namespace XFTest.Views
             {
                 currentItem.IsToHighliteDate = true;
                 bidingContext.SelectedDateLabel = $"{currentItem.Date} {currentItem.Day}";
-                System.Threading.Tasks.Task.Run(async() => 
-                { 
-                  await bidingContext.GetCarWashList();
-                });
+                bidingContext.GetCarWashList();
             }
         }
 
