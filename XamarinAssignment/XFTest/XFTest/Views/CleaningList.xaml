@@ -117,7 +117,7 @@
                                             <ColumnDefinition Width="5*" />
                                         </Grid.ColumnDefinitions>
                                         <yummy:PancakeView  
-                                                Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsToHighliteDate,Converter={StaticResource TrueFalseConverter}}">
+                                                Grid.Row="0" Grid.Column="0" >
                                             <Label 
                                                 x:Name="dateLbl01" FontFamily="{StaticResource BoldFont}"
                                                 Style="{StaticResource CalDateText}" Text="{Binding Date}" 
@@ -126,16 +126,7 @@
                                                 HeightRequest="35"
                                                 Padding="4,10,4,0"/>
                                         </yummy:PancakeView>
-                                        <yummy:PancakeView  CornerRadius="{OnPlatform iOS='20', Android='45,45,45,45'}" 
-                                                   BackgroundColor="#368268" Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsToHighliteDate}">
-                                            <Label 
-                                                 FontFamily="{StaticResource BoldFont}"
-                                                Style="{StaticResource CalDateText}" Text="{Binding Date}" 
-                                                TextColor="{StaticResource ColorBluishGrey}" 
-                                                HorizontalOptions="CenterAndExpand"
-                                                HeightRequest="35"
-                                                Padding="4,10,4,0"/>
-                                        </yummy:PancakeView>
+                                       
                                         <Label 
                                             Grid.Row="1" Grid.Column="0"
                                             x:Name="dayLbl01"
