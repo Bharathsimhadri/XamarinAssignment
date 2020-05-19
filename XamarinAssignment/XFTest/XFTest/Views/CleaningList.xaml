@@ -240,7 +240,6 @@
             </StackLayout>
 
             <Grid.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CloseCalander}"/>
             </Grid.GestureRecognizers>
         </Grid>
     </ContentPage.Content>

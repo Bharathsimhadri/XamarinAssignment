@@ -16,6 +16,7 @@ namespace XFTest.ViewModels
 {
 	public class CleaningListViewModel : BindableBase, INotifyPropertyChanged
     {
+        #region Properties and commands
         ICarFitServices _carFitServices;
         SubCalanderContract selectedMonthData;
         public SubCalanderContract choosenDateDate;
@@ -56,52 +57,25 @@ namespace XFTest.ViewModels
         public ICommand ToogleCalanderCommand { get { return new Command(() => { IsToShowCalander = !IsToShowCalander; }); } }
         public ICommand PreviousMonthCommand { get { return new Command(() => { PreviousMonthClicked(); }); } }
         public ICommand NextMonthCommand { get { return new Command(() => { NextMonthClicked(); }); } }
-        public ICommand RefreshCommand { get { return new Command(() => { RefreshData(); }); } }
+        public ICommand RefreshCommand { get { return new Command(async() => {await RefreshData(); }); } }
         public ICommand CloseCalander { get { return new Command(() => { IsToShowCalander = false; }); } }
+        #endregion
 
-        private void NextMonthClicked()
-        {
-            if( selectedMonthData?.MonthId==12)
-            {
-                selectedMonthData = calanderBackUp[0];
-                CalanderData =new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
-                DateLabel = $"{selectedMonthData?.MonthName} 2020";
-            }
-            else
-            {
-                var monthId = selectedMonthData.MonthId + 1;
-                selectedMonthData = calanderBackUp.FirstOrDefault(CB=>CB.MonthId==monthId);
-                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
-                DateLabel = $"{selectedMonthData?.MonthName} 2020";
-            }
-        }
-
-        private void PreviousMonthClicked()
-        {
-            if (selectedMonthData?.MonthId == 1)
-            {
-                selectedMonthData = calanderBackUp[11];
-                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
-                DateLabel = $"{selectedMonthData?.MonthName} 2020";
-            }
-            else
-            {
-                var monthId = selectedMonthData.MonthId - 1;
-                selectedMonthData = calanderBackUp.FirstOrDefault(CB=>CB.MonthId==monthId);
-                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
-                DateLabel = $"{selectedMonthData?.MonthName} 2020";
-            }
-        }
-
+        #region Constructore
         public CleaningListViewModel( IDialogService dialogService, INavigationService navigationService
             , ICarFitServices carFitServices)
         {
             _carFitServices = carFitServices;
             CarWashList = new ObservableCollection<CarWashDataContract>();
             PopulateCalanderData();
-            GetCarWashList();
+            System.Threading.Tasks.Task.Run(async () => 
+            { 
+               await GetCarWashList();
+            });
         }
+        #endregion
 
+        #region Tasks and methods
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -296,18 +270,52 @@ namespace XFTest.ViewModels
             CalanderData =new ObservableCollection<SubCalanderContract>(calanderBackUp[month - 1].Month);
         }
 
-        void RefreshData()
+        private void NextMonthClicked()
         {
-            IsRefreshing = true;
-             GetCarWashList();
+            if (selectedMonthData?.MonthId == 12)
+            {
+                selectedMonthData = calanderBackUp[0];
+                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
+                DateLabel = $"{selectedMonthData?.MonthName} 2020";
+            }
+            else
+            {
+                var monthId = selectedMonthData.MonthId + 1;
+                selectedMonthData = calanderBackUp.FirstOrDefault(CB => CB.MonthId == monthId);
+                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
+                DateLabel = $"{selectedMonthData?.MonthName} 2020";
+            }
         }
 
-        public async void GetCarWashList()
+        private void PreviousMonthClicked()
+        {
+            if (selectedMonthData?.MonthId == 1)
+            {
+                selectedMonthData = calanderBackUp[11];
+                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
+                DateLabel = $"{selectedMonthData?.MonthName} 2020";
+            }
+            else
+            {
+                var monthId = selectedMonthData.MonthId - 1;
+                selectedMonthData = calanderBackUp.FirstOrDefault(CB => CB.MonthId == monthId);
+                CalanderData = new ObservableCollection<SubCalanderContract>(selectedMonthData?.Month);
+                DateLabel = $"{selectedMonthData?.MonthName} 2020";
+            }
+        }
+
+        async System.Threading.Tasks.Task RefreshData()
+        {
+            IsRefreshing = true;
+           await  GetCarWashList();
+        }
+
+        public async System.Threading.Tasks. Task GetCarWashList()
         {
             CarWashList.Clear();
             IsBusy = true;
             IsRefreshing = false;
-           var result= await _carFitServices.GetAllCarServices();
+            var result= await _carFitServices.GetAllCarServices();
             if(result.Success)
             {
                 result.Data.ForEach(D =>
@@ -324,5 +332,6 @@ namespace XFTest.ViewModels
             }
             IsBusy = false;
         }
+        #endregion
     }
 }
