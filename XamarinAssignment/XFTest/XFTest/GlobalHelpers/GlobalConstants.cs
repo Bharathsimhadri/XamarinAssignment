@@ -7,5 +7,6 @@ namespace XFTest.GlobalHelpers
     public static class GlobalConstants
     {
         public const string DateFormat = "yyyy MMMM";
+        public const string TimeFormat = "H:mm";
     }
 }

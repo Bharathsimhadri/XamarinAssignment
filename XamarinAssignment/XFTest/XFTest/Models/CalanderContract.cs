@@ -16,10 +16,11 @@ namespace XFTest.Models
         public bool IsToHighliteDate { get=>_isToHighlightDate; set { _isToHighlightDate = value; SetProperty(ref _isToHighlightDate, value); } }
 
         public List<SubCalanderContract> Month { get; set; }
-        public SubCalanderContract(int date,string day)
+        public SubCalanderContract(int date,string day,int monthId)
         {
             Date = date;
             Day = day;
+            MonthId = monthId;
         }
         public SubCalanderContract(int monthId, List<SubCalanderContract> _month,string _monthName)
         {

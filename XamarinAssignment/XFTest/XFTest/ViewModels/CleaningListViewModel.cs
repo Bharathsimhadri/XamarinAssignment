@@ -34,6 +34,9 @@ namespace XFTest.ViewModels
         bool _isToShowCalander;
         public bool IsToShowCalander { get { return _isToShowCalander; } set { _isToShowCalander = value;NotifyPropertyChanged("IsToShowCalander"); } }
 
+        bool _isWashListEmpty;
+        public bool IsWashListEmpty { get { return _isWashListEmpty; } set { _isWashListEmpty = value;NotifyPropertyChanged("IsWashListEmpty"); } }
+
         string _dateLabel;
         public string DateLabel { get { return _dateLabel; } set { _dateLabel = value;NotifyPropertyChanged(nameof(DateLabel)); } }
 
@@ -84,166 +87,166 @@ namespace XFTest.ViewModels
         {
             var jan = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,1),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,1),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,1),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,1),new SubCalanderContract(5,Appstrings.Label_Short_Friday,1),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,1),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,1),new SubCalanderContract(8,Appstrings.Label_Short_Monday,1),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,1),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,1),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,1),new SubCalanderContract(12,Appstrings.Label_Short_Friday,1),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,1),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,1),new SubCalanderContract(15,Appstrings.Label_Short_Monday,1),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,1),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,1),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,1),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,1),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,1),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,1),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,1),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,1),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,1),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,1),new SubCalanderContract(26,Appstrings.Label_Short_Friday,1),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,1),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,1),new SubCalanderContract(29,Appstrings.Label_Short_Monday,1),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,1),
+                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday,1),
             };
             var feb = new List<SubCalanderContract>
             {
-               new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday)
+               new SubCalanderContract(1,Appstrings.Label_Short_Monday,2),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,2),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,2),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,2),new SubCalanderContract(5,Appstrings.Label_Short_Friday,2),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,2),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,2),new SubCalanderContract(8,Appstrings.Label_Short_Monday,2),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,2),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,2),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,2),new SubCalanderContract(12,Appstrings.Label_Short_Friday,2),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,2),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,2),new SubCalanderContract(15,Appstrings.Label_Short_Monday,2),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,2),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,2),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,2),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,2),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,2),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,2),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,2),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,2),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,2),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,2),new SubCalanderContract(26,Appstrings.Label_Short_Friday,2),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,2),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,2),new SubCalanderContract(29,Appstrings.Label_Short_Monday,2)
             };
             var mar = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,3),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,3),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,3),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,3),new SubCalanderContract(5,Appstrings.Label_Short_Friday,3),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,3),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,3),new SubCalanderContract(8,Appstrings.Label_Short_Monday,3),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,3),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,3),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,3),new SubCalanderContract(12,Appstrings.Label_Short_Friday,3),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,3),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,3),new SubCalanderContract(15,Appstrings.Label_Short_Monday,3),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,3),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,3),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,3),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,3),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,3),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,3),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,3),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,3),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,3),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,3),new SubCalanderContract(26,Appstrings.Label_Short_Friday,3),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,3),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,3),new SubCalanderContract(29,Appstrings.Label_Short_Monday,3),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,3),
+                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday,3),
             };
             var april = new List<SubCalanderContract>
             {
-                 new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
+                 new SubCalanderContract(1,Appstrings.Label_Short_Monday,4),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,4),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,4),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,4),new SubCalanderContract(5,Appstrings.Label_Short_Friday,4),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,4),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,4),new SubCalanderContract(8,Appstrings.Label_Short_Monday,4),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,4),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,4),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,4),new SubCalanderContract(12,Appstrings.Label_Short_Friday,4),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,4),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,4),new SubCalanderContract(15,Appstrings.Label_Short_Monday,4),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,4),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,4),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,4),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,4),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,4),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,4),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,4),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,4),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,4),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,4),new SubCalanderContract(26,Appstrings.Label_Short_Friday,4),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,4),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,4),new SubCalanderContract(29,Appstrings.Label_Short_Monday,4),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,4),
             };
             var may = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,5),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,5),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,5),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,5),new SubCalanderContract(5,Appstrings.Label_Short_Friday,5),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,5),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,5),new SubCalanderContract(8,Appstrings.Label_Short_Monday,5),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,5),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,5),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,5),new SubCalanderContract(12,Appstrings.Label_Short_Friday,5),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,5),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,5),new SubCalanderContract(15,Appstrings.Label_Short_Monday,5),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,5),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,5),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,5),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,5),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,5),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,5),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,5),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,5),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,5),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,5),new SubCalanderContract(26,Appstrings.Label_Short_Friday,5),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,5),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,5),new SubCalanderContract(29,Appstrings.Label_Short_Monday,5),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,5),
+                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday,5),
             };
             var june = new List<SubCalanderContract>
             {
-               new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
+               new SubCalanderContract(1,Appstrings.Label_Short_Monday,6),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,6),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,6),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,6),new SubCalanderContract(5,Appstrings.Label_Short_Friday,6),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,6),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,6),new SubCalanderContract(8,Appstrings.Label_Short_Monday,6),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,6),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,6),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,6),new SubCalanderContract(12,Appstrings.Label_Short_Friday,6),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,6),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,6),new SubCalanderContract(15,Appstrings.Label_Short_Monday,6),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,6),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,6),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,6),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,6),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,6),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,6),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,6),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,6),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,6),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,6),new SubCalanderContract(26,Appstrings.Label_Short_Friday,6),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,6),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,6),new SubCalanderContract(29,Appstrings.Label_Short_Monday,6),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,6),
             };
             var July = new List<SubCalanderContract>
             {
-              new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday),
+              new SubCalanderContract(1,Appstrings.Label_Short_Monday,7),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,7),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,7),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,7),new SubCalanderContract(5,Appstrings.Label_Short_Friday,7),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,7),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,7),new SubCalanderContract(8,Appstrings.Label_Short_Monday,7),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,7),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,7),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,7),new SubCalanderContract(12,Appstrings.Label_Short_Friday,7),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,7),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,7),new SubCalanderContract(15,Appstrings.Label_Short_Monday,7),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,7),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,7),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,7),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,7),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,7),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,7),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,7),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,7),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,7),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,7),new SubCalanderContract(26,Appstrings.Label_Short_Friday,7),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,7),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,7),new SubCalanderContract(29,Appstrings.Label_Short_Monday,7),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,7),
+                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday,7),
             };
             var August = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Tuesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,8),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,8),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,8),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,8),new SubCalanderContract(5,Appstrings.Label_Short_Friday,8),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,8),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,8),new SubCalanderContract(8,Appstrings.Label_Short_Monday,8),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,8),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,8),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,8),new SubCalanderContract(12,Appstrings.Label_Short_Friday,8),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,8),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,8),new SubCalanderContract(15,Appstrings.Label_Short_Monday,8),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,8),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,8),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,8),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,8),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,8),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,8),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,8),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,8),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,8),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,8),new SubCalanderContract(26,Appstrings.Label_Short_Friday,8),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,8),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,8),new SubCalanderContract(29,Appstrings.Label_Short_Monday,8),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,8),
+                new SubCalanderContract(31,Appstrings.Label_Short_Tuesday,8),
             };
             var Sep = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,9),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,9),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,9),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,9),new SubCalanderContract(5,Appstrings.Label_Short_Friday,9),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,9),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,9),new SubCalanderContract(8,Appstrings.Label_Short_Monday,9),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,9),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,9),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,9),new SubCalanderContract(12,Appstrings.Label_Short_Friday,9),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,9),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,9),new SubCalanderContract(15,Appstrings.Label_Short_Monday,9),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,9),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,9),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,9),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,9),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,9),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,9),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,9),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,9),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,9),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,9),new SubCalanderContract(26,Appstrings.Label_Short_Friday,9),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,9),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,9),new SubCalanderContract(29,Appstrings.Label_Short_Monday,9),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,9),
             };
             var oct = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,10),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,10),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,10),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,10),new SubCalanderContract(5,Appstrings.Label_Short_Friday,10),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,10),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,10),new SubCalanderContract(8,Appstrings.Label_Short_Monday,10),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,10),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,10),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,10),new SubCalanderContract(12,Appstrings.Label_Short_Friday,10),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,10),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,10),new SubCalanderContract(15,Appstrings.Label_Short_Monday,10),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,10),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,10),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,10),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,10),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,10),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,10),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,10),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,10),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,10),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,10),new SubCalanderContract(26,Appstrings.Label_Short_Friday,10),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,10),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,10),new SubCalanderContract(29,Appstrings.Label_Short_Monday,10),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,10),
+                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday,10),
             };
             var nov = new List<SubCalanderContract>
             {
-                 new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
+                 new SubCalanderContract(1,Appstrings.Label_Short_Monday,11),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,11),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,1),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,11),new SubCalanderContract(5,Appstrings.Label_Short_Friday,11),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,11),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,11),new SubCalanderContract(8,Appstrings.Label_Short_Monday,11),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,11),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,11),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,11),new SubCalanderContract(12,Appstrings.Label_Short_Friday,11),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,11),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,11),new SubCalanderContract(15,Appstrings.Label_Short_Monday,11),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,11),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,11),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,11),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,11),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,11),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,11),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,11),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,11),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,11),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,11),new SubCalanderContract(26,Appstrings.Label_Short_Friday,11),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,11),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,11),new SubCalanderContract(29,Appstrings.Label_Short_Monday,11),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,11),
             };
             var dec = new List<SubCalanderContract>
             {
-                new SubCalanderContract(1,Appstrings.Label_Short_Monday),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(4,Appstrings.Label_Short_Thursday),new SubCalanderContract(5,Appstrings.Label_Short_Friday),new SubCalanderContract(6,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(7,Appstrings.Label_Short_Sunday),new SubCalanderContract(8,Appstrings.Label_Short_Monday),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday),new SubCalanderContract(11,Appstrings.Label_Short_Thursday),new SubCalanderContract(12,Appstrings.Label_Short_Friday),
-                new SubCalanderContract(13,Appstrings.Label_Short_Saturday),new SubCalanderContract(14,Appstrings.Label_Short_Sunday),new SubCalanderContract(15,Appstrings.Label_Short_Monday),
-                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday),new SubCalanderContract(18,Appstrings.Label_Short_Thursday),
-                new SubCalanderContract(19,Appstrings.Label_Short_Friday),new SubCalanderContract(20,Appstrings.Label_Short_Saturday),new SubCalanderContract(21,Appstrings.Label_Short_Sunday),
-                new SubCalanderContract(22,Appstrings.Label_Short_Monday),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday),
-                new SubCalanderContract(25,Appstrings.Label_Short_Thursday),new SubCalanderContract(26,Appstrings.Label_Short_Friday),new SubCalanderContract(27,Appstrings.Label_Short_Saturday),
-                new SubCalanderContract(28,Appstrings.Label_Short_Sunday),new SubCalanderContract(29,Appstrings.Label_Short_Monday),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday),
-                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday),
+                new SubCalanderContract(1,Appstrings.Label_Short_Monday,12),new SubCalanderContract(2,Appstrings.Label_Short_Tuesday,12),new SubCalanderContract(3,Appstrings.Label_Short_Wednesday,12),
+                new SubCalanderContract(4,Appstrings.Label_Short_Thursday,12),new SubCalanderContract(5,Appstrings.Label_Short_Friday,12),new SubCalanderContract(6,Appstrings.Label_Short_Saturday,12),
+                new SubCalanderContract(7,Appstrings.Label_Short_Sunday,12),new SubCalanderContract(8,Appstrings.Label_Short_Monday,12),new SubCalanderContract(9,Appstrings.Label_Short_Tuesday,12),
+                new SubCalanderContract(10,Appstrings.Label_Short_Wednesday,12),new SubCalanderContract(11,Appstrings.Label_Short_Thursday,12),new SubCalanderContract(12,Appstrings.Label_Short_Friday,12),
+                new SubCalanderContract(13,Appstrings.Label_Short_Saturday,12),new SubCalanderContract(14,Appstrings.Label_Short_Sunday,12),new SubCalanderContract(15,Appstrings.Label_Short_Monday,12),
+                new SubCalanderContract(16,Appstrings.Label_Short_Tuesday,12),new SubCalanderContract(17,Appstrings.Label_Short_Wednesday,12),new SubCalanderContract(18,Appstrings.Label_Short_Thursday,12),
+                new SubCalanderContract(19,Appstrings.Label_Short_Friday,12),new SubCalanderContract(20,Appstrings.Label_Short_Saturday,12),new SubCalanderContract(21,Appstrings.Label_Short_Sunday,12),
+                new SubCalanderContract(22,Appstrings.Label_Short_Monday,12),new SubCalanderContract(23,Appstrings.Label_Short_Tuesday,12),new SubCalanderContract(24,Appstrings.Label_Short_Wednesday,12),
+                new SubCalanderContract(25,Appstrings.Label_Short_Thursday,12),new SubCalanderContract(26,Appstrings.Label_Short_Friday,12),new SubCalanderContract(27,Appstrings.Label_Short_Saturday,12),
+                new SubCalanderContract(28,Appstrings.Label_Short_Sunday,12),new SubCalanderContract(29,Appstrings.Label_Short_Monday,12),new SubCalanderContract(30,Appstrings.Label_Short_Tuesday,12),
+                new SubCalanderContract(31,Appstrings.Label_Short_Wednesday,12),
             };
 
             calanderBackUp = new ObservableCollection<SubCalanderContract>
@@ -308,9 +311,10 @@ namespace XFTest.ViewModels
             GetCarWashList();
         }
 
-        public async void GetCarWashList()
+        public async void GetCarWashList(List<SubCalanderContract> selectedDates=null)
         {
             CarWashList.Clear();
+            IsWashListEmpty = false;
             IsBusy = true;
             IsRefreshing = false;
             try
@@ -318,7 +322,6 @@ namespace XFTest.ViewModels
                 var result = await _carFitServices.GetAllCarServices();
                 if (result.Success)
                 {
-
                     result.Data.ForEach(D =>
                     {
                         D.Tasks.ForEach(T =>
@@ -343,6 +346,22 @@ namespace XFTest.ViewModels
                             D.DistanceFromNextService = 0;
                         }
                     });
+                    if(selectedDates!=null)
+                    {
+                        foreach (var date in selectedDates)
+                        {
+                           var sortedCarWashList= CarWashList.Where(C => C.ServiceDate.Date.Day ==date.Date&&C.ServiceDate.Month==date.MonthId).ToList();
+                            CarWashList = new ObservableCollection<CarWashDataContract>(sortedCarWashList);
+                        }
+                    }
+                    else
+                    {
+                        SelectedDateLabel = Appstrings.Label_Today;
+                    }
+                    if(CarWashList!=null &&!CarWashList.Any())
+                    {
+                        IsWashListEmpty = true;
+                    }
                 }
             }
             catch(Exception ex)

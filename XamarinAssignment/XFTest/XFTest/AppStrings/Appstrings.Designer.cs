@@ -142,6 +142,15 @@ namespace XFTest.AppStrings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No data available.
+        /// </summary>
+        internal static string Label_NoData {
+            get {
+                return ResourceManager.GetString("Label_NoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         internal static string Label_November {

@@ -119,9 +119,9 @@
                             HorizontalTextAlignment="Start" >
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding StartTimeUtc}"/>
-                                    <Span Text="/"/>
-                                    <Span Text="{Binding EndTimeUtc}"/>
+                                    <Span Text="{Binding DisplayStartTime}"/>
+                                    <Span Text="-"/>
+                                    <Span Text="{Binding ExpectedTime}"/>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

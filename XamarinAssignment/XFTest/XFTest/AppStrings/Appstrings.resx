@@ -144,6 +144,9 @@
   <data name="Label_May" xml:space="preserve">
     <value>May</value>
   </data>
+  <data name="Label_NoData" xml:space="preserve">
+    <value>No data available</value>
+  </data>
   <data name="Label_November" xml:space="preserve">
     <value>November</value>
   </data>

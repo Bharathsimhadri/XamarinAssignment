@@ -11,6 +11,8 @@ using XFTest.ViewModels;
 using Prism.Services.Dialogs;
 using XFTest.Models;
 using Xamarin.Forms.Internals;
+using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace XFTest.Views
 {
@@ -24,16 +26,25 @@ namespace XFTest.Views
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var view = sender as CollectionView;
             var bidingContext = this.BindingContext as CleaningListViewModel;
             if (bidingContext != null)
             {
                 bidingContext.CalanderData.ForEach(CD=>CD.IsToHighliteDate=false);
+                bidingContext.SelectedDateLabel = string.Empty;
             }
-            var currentItem = (e.CurrentSelection.FirstOrDefault() as SubCalanderContract);
-            if(currentItem!=null)
+            var currentItem = ((IEnumerable)e.CurrentSelection).Cast<SubCalanderContract>().ToList();
+            if(currentItem!=null && currentItem.Count<3)
             {
-                currentItem.IsToHighliteDate = true;
-                bidingContext.SelectedDateLabel = $"{currentItem.Date} {currentItem.Day}";
+                currentItem.ForEach(D=> bidingContext.SelectedDateLabel = $"{bidingContext.SelectedDateLabel} {D.Date} {D.Day},");
+                bidingContext.GetCarWashList(new List<SubCalanderContract>( currentItem));
+            }
+            else
+            {
+                if(view!=null)
+                {
+                    view.SelectedItems = null;
+                }
                 bidingContext.GetCarWashList();
             }
         }

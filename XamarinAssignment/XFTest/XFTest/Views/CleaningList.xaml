@@ -14,6 +14,7 @@
              NavigationPage.HasNavigationBar="False"
              Title="I DAG" 
              x:Class="XFTest.Views.CleaningList"
+             xmlns:Translations="clr-namespace:XFTest.Extensions;assembly=XFTest"
              BackgroundColor="#f2f2ef"
              xmlns:Converters="clr-namespace:XFTest.Converters;assembly=XFTest">
     
@@ -104,7 +105,8 @@
                     </Grid>
 
                     <CollectionView ItemsLayout="HorizontalList" HorizontalOptions="FillAndExpand" SelectionChanged="CollectionView_SelectionChanged"
-                                    HeightRequest="80" ItemsSource="{Binding CalanderData}" SelectionMode="Single" >
+                                    HeightRequest="80" ItemsSource="{Binding CalanderData}" SelectionMode="Multiple" x:Name="ClanderView"
+                                    >
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout HorizontalOptions="StartAndExpand" Margin="5,0" >
@@ -144,7 +146,9 @@
                 </StackLayout>
             </Grid>
             <RefreshView IsRefreshing="{Binding IsRefreshing}" RefreshColor="Blue" Command="{Binding RefreshCommand}"  Grid.Row="1">
-            <CollectionView ItemsSource="{Binding CarWashList}" Margin="20,20,20,20" SelectionChanged="CollectionView_SelectionChanged_1" SelectionMode="Single">
+            <CollectionView ItemsSource="{Binding CarWashList}" Margin="20,20,20,20" 
+                            SelectionChanged="CollectionView_SelectionChanged_1" SelectionMode="Single"
+                            x:Name="CarListCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Margin="0, 0, 0, 15">
@@ -229,7 +233,9 @@
                 <ActivityIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                    HeightRequest="30" WidthRequest="30" Color="Blue" IsRunning="True"/>
             </StackLayout>
-
+            <Label Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   Text="No data available" FontSize="18" FontAttributes="Bold"
+                   IsVisible="{Binding IsWashListEmpty}"/>
             <Grid.GestureRecognizers>
             </Grid.GestureRecognizers>
         </Grid>

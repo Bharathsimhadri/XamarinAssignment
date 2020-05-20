@@ -6,13 +6,20 @@ namespace XFTest.Models
 {
     public partial class CarWashDataContract
     {
-        public DateTime AppliedTime { get; set; }
+        public DateTime ServiceDate { get; set; }
         public Guid VisitId { get; set; }
         public Guid HomeBobEmployeeId { get; set; }
         public Guid HouseOwnerId { get; set; }
         public bool IsBlocked { get; set; }
-        public string StartTimeUtc { get; set; }
-        public string EndTimeUtc { get; set; }
+        DateTime _startTime;
+        public DateTime StartTimeUtc { get=>_startTime; set { _startTime = value;DisplayStartTime = value.ToString(GlobalHelpers.GlobalConstants.TimeFormat); } }
+        DateTime _endTime;
+        public DateTime EndTimeUtc
+        {
+            get => _endTime; set { _endTime = value; DisplayEndTime = value.ToString(GlobalHelpers.GlobalConstants.DateFormat); }
+        }
+        public string DisplayStartTime { get; set; }
+        public string DisplayEndTime { get; set; }
         public string Title { get; set; }
         public bool IsReviewed { get; set; }
         public bool IsFirstVisit { get; set; }
