@@ -307,6 +307,7 @@ namespace XFTest.ViewModels
 
         void RefreshData()
         {
+            IsToShowCalander = false;
             IsRefreshing = true;
             GetCarWashList();
         }
@@ -314,9 +315,8 @@ namespace XFTest.ViewModels
         public async void GetCarWashList(List<SubCalanderContract> selectedDates=null)
         {
             CarWashList.Clear();
-            IsWashListEmpty = false;
+            IsRefreshing= IsWashListEmpty = false;
             IsBusy = true;
-            IsRefreshing = false;
             try
             {
                 var result = await _carFitServices.GetAllCarServices();
@@ -346,7 +346,7 @@ namespace XFTest.ViewModels
                             D.DistanceFromNextService = 0;
                         }
                     });
-                    if(selectedDates!=null)
+                    if(selectedDates!=null&&selectedDates.Any())
                     {
                         var sortedCarWashList = new List<CarWashDataContract>();
                         foreach (var date in selectedDates)
@@ -358,12 +358,10 @@ namespace XFTest.ViewModels
                     }
                     else
                     {
+                        IsToShowCalander = false;
                         SelectedDateLabel = Appstrings.Label_Today;
                     }
-                    if(CarWashList!=null &&!CarWashList.Any())
-                    {
-                        IsWashListEmpty = true;
-                    }
+                    IsWashListEmpty = CarWashList != null && !CarWashList.Any();
                 }
             }
             catch(Exception ex)

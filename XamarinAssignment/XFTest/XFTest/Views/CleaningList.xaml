@@ -79,7 +79,7 @@
 
                         <Label Grid.Row="0" Grid.Column="0" Margin="{OnPlatform iOS='0,55,0,0', Android='0,30,0,0'}" Text="{Binding DateLabel}" 
                                Style="{StaticResource PageHeading}" 
-                               HorizontalTextAlignment="Center" 
+                               HorizontalTextAlignment="Start" 
                                FontFamily="{StaticResource BoldFont}"  FontSize="{StaticResource FontSizeA20I23}" TextColor="#FFFFFF" />
                         <ffimageloadingsvg:SvgCachedImage Margin="{OnPlatform iOS='0,60,0,0', Android='0,30,0,0'}" 
                                 Source="Arrow_Left.svg" 

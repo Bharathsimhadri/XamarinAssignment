@@ -30,11 +30,11 @@ namespace XFTest.Views
             if (bidingContext != null)
             {
                 bidingContext.SelectedDateLabel = string.Empty;
-                var currentItem = ((IEnumerable)e.CurrentSelection).Cast<SubCalanderContract>().ToList();
-                if (currentItem != null && currentItem.Count < 3)
+                var currentSelectedItems = ((IEnumerable)e.CurrentSelection).Cast<SubCalanderContract>().ToList();
+                if (currentSelectedItems != null&& currentSelectedItems.Any())
                 {
-                    currentItem.ForEach(D => bidingContext.SelectedDateLabel = $"{bidingContext.SelectedDateLabel} {D.Date} {D.Day},");
-                    bidingContext.GetCarWashList(new List<SubCalanderContract>(currentItem));
+                    currentSelectedItems.ForEach(D => bidingContext.SelectedDateLabel = $"{bidingContext.SelectedDateLabel} {D.Date} {D.Day},");
+                    bidingContext.GetCarWashList(new List<SubCalanderContract>(currentSelectedItems));
                 }
                 else
                 {
