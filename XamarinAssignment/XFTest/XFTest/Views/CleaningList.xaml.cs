@@ -26,26 +26,20 @@ namespace XFTest.Views
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var view = sender as CollectionView;
             var bidingContext = this.BindingContext as CleaningListViewModel;
             if (bidingContext != null)
             {
-                bidingContext.CalanderData.ForEach(CD=>CD.IsToHighliteDate=false);
                 bidingContext.SelectedDateLabel = string.Empty;
-            }
-            var currentItem = ((IEnumerable)e.CurrentSelection).Cast<SubCalanderContract>().ToList();
-            if(currentItem!=null && currentItem.Count<3)
-            {
-                currentItem.ForEach(D=> bidingContext.SelectedDateLabel = $"{bidingContext.SelectedDateLabel} {D.Date} {D.Day},");
-                bidingContext.GetCarWashList(new List<SubCalanderContract>( currentItem));
-            }
-            else
-            {
-                if(view!=null)
+                var currentItem = ((IEnumerable)e.CurrentSelection).Cast<SubCalanderContract>().ToList();
+                if (currentItem != null && currentItem.Count < 3)
                 {
-                    view.SelectedItems = null;
+                    currentItem.ForEach(D => bidingContext.SelectedDateLabel = $"{bidingContext.SelectedDateLabel} {D.Date} {D.Day},");
+                    bidingContext.GetCarWashList(new List<SubCalanderContract>(currentItem));
                 }
-                bidingContext.GetCarWashList();
+                else
+                {
+                    bidingContext.GetCarWashList();
+                }
             }
         }
 

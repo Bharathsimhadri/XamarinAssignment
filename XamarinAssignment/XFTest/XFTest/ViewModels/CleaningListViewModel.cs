@@ -348,11 +348,13 @@ namespace XFTest.ViewModels
                     });
                     if(selectedDates!=null)
                     {
+                        var sortedCarWashList = new List<CarWashDataContract>();
                         foreach (var date in selectedDates)
                         {
-                           var sortedCarWashList= CarWashList.Where(C => C.ServiceDate.Date.Day ==date.Date&&C.ServiceDate.Month==date.MonthId).ToList();
-                            CarWashList = new ObservableCollection<CarWashDataContract>(sortedCarWashList);
+                           var data= CarWashList.Where(C => C.ServiceDate.Date.Day ==date.Date&&C.ServiceDate.Month==date.MonthId).ToList();
+                            sortedCarWashList.AddRange(data);
                         }
+                        CarWashList = new ObservableCollection<CarWashDataContract>(sortedCarWashList);
                     }
                     else
                     {
